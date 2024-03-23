@@ -58,7 +58,7 @@
 
 
                 <!----------sidebar start--------------->
-                
+
                         <li class="side-nav-item">
                             <a data-bs-toggle="collapse" href="#sidebarIcons" aria-expanded="false" aria-controls="sidebarIcons" class="side-nav-link">
                                 <i class="ri-service-fill"></i>
@@ -68,7 +68,7 @@
                             <div class="collapse" id="sidebarIcons">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="">Profile Change</a>
+                                        <a href="{{ route('profile_change') }}">Profile Change</a>
                                     </li>
                                     <li>
                                         <a href="">Advance Setting</a>

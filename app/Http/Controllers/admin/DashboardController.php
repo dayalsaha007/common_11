@@ -13,17 +13,29 @@ class DashboardController extends Controller
             function index(){
                 if (Auth::guest()) {
                     return view('auth.login');
-                } 
-                else 
-                { 
+                }
+                else
+                {
                     if(Auth::user()->role === '1' ){
-                        return redirect('/admin/dashboard');
+                        $notification = array(
+                            'message' => 'Admin Login Successfully',
+                            'alert-type' => 'success'
+                        );
+                        return redirect('/admin/dashboard')->with($notification);
                     }
                     elseif (Auth::user()->role === '2') {
-                        return redirect('/manager/dashboard');
+                        $notification = array(
+                            'message' => 'Manager Login Successfully',
+                            'alert-type' => 'success'
+                        );
+                        return redirect('/manager/dashboard')->with($notification);
                     }
                     else{
-                        return redirect('/dashboard');
+                        $notification = array(
+                            'message' => 'User Login Successfully',
+                            'alert-type' => 'success'
+                        );
+                        return redirect('/dashboard')->with($notification);
                     }
                 }
             }
@@ -46,7 +58,13 @@ class DashboardController extends Controller
         /*-----------Logout Dahsboard---------------*/
             function logout(){
                 Auth::logout();
-                return redirect('/');
+                
+                $notification = array(
+                    'message' => 'Admin Logout Successfully',
+                    'alert-type' => 'error'
+                );
+
+                return redirect('/')->with($notification);
             }
 
 }

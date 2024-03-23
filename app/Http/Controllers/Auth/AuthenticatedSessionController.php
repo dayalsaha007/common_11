@@ -28,13 +28,27 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
             if($request->user()->role === '1' ){
-                return redirect('/admin/dashboard');
+                $notification = array(
+                    'message' => 'Admin Login Successfully',
+                    'alert-type' => 'success'
+                );
+                return redirect('/admin/dashboard')->with($notification);
             }
             elseif ($request->user()->role === '2') {
-                return redirect('/manager/dashboard');
+                $notification = array(
+                    'message' => 'Manager Login Successfully',
+                    'alert-type' => 'success'
+                );
+                return redirect('/manager/dashboard')->with($notification);
             }
 
-        return redirect()->intended(route('dashboard'));
+            $notification = array(
+                'message' => 'User Login Successfully',
+                'alert-type' => 'success'
+            );
+
+            return redirect()->intended(route('dashboard'))->with($notification);
+
     }
 
     /**

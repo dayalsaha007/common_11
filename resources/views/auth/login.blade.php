@@ -1,75 +1,147 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Log In</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{asset('backend/assets/images/favicon.ico')}}">
+
+        <!-- Theme Config Js -->
+        <script src="{{asset('backend/assets/js/config.js')}}"></script>
+
+        <!-- App css -->
+        <link href="{{asset('backend/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
+
+        <!-- Icons css -->
+        <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    </head>
+
+    <body class="authentication-bg position-relative">
+        <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5 position-relative">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xxl-6 col-lg-5">
+                        <div class="position-relative rounded-3 overflow-hidden" style="background-image: url({{asset('backend/assets/images/flowers/img-3.png')}}); background-position: top right; background-repeat: no-repeat;">
+                            <div class="card bg-transparent mb-0">
+                            <!-- Logo-->
+                            <div class="auth-brand">
+                                <a href="index.html" class="logo-light">
+                                    <img src="{{asset('backend/assets/images/logo.png')}}" alt="logo" height="22">
+                                </a>
+                                <a href="index.html" class="logo-dark">
+                                    <img src="{{asset('backend/assets/images/logo-dark.png')}}" alt="dark logo" height="22">
+                                </a>
+                            </div>
+
+                            <div class="card-body p-4">
+                                <div class="w-50">
+                                    <h4 class="pb-0 fw-bold">Sign In</h4>
+                                    <p class="fw-semibold mb-4">Enter your email address and password to access admin panel.</p>
+                                </div>
+
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+
+                                    <div class="mb-3">
+                                        <label for="emailaddress" class="form-label">Email address</label>
+                                        <input class="form-control" type="email" name="email" id="email" required="" placeholder="Enter your email">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <a href="auth-recoverpw.html" class="float-end fs-12">Forgot your password?</a>
+                                        <label for="password" class="form-label">Password</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="password" id="password" class="form-control" name="password" placeholder="Enter your password">
+                                            <div class="input-group-text" data-password="false">
+                                                <i class="ri-eye-line toggle-password"></i>
+                                                {{--  <span class="password-eye"></span>  --}}
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
+                                            <label class="form-check-label" for="checkbox-signin">Remember me</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3 text-center">
+                                        <button class="btn btn-primary w-100" type="submit"> Log In </button>
+                                    </div>
+
+                                </form>
+                            </div> <!-- end card-body -->
+                        </div>
+                        <!-- end card -->
+                    </div>
+
+                        <div class="row mt-3">
+                            <div class="col-12 text-center">
+                                <p class="text-muted bg-body">Do not have an account? <a href="{{ route('register') }}" class="text-muted ms-1 link-offset-3 text-decoration-underline"><b>Sign Up</b></a></p>
+                            </div> <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
         </div>
+        <!-- end page -->
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <footer class="footer footer-alt fw-medium">
+            <span class="bg-body"><script>document.write(new Date().getFullYear())</script> © Pialy Saha.com</span>
+        </footer>
+        <!-- Vendor js -->
+        <script src="{{asset('backend/assets/js/vendor.min.js')}}"></script>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+        <!-- App js -->
+        <script src="{{asset('backend/assets/js/app.min.js')}}"></script>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        <script type="text/javascript">
+            $(document).on('click', '.toggle-password', function() {
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+                $(this).toggleClass("ri-eye-off-line");
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
+                var input = $(".pass_log_id");
+                input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+            });
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script>
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type','info') }}"
+            switch(type){
+                case 'info':
+                toastr.info(" {{ Session::get('message') }} ");
+                break;
+
+                case 'success':
+                toastr.success(" {{ Session::get('message') }} ");
+                break;
+
+                case 'warning':
+                toastr.warning(" {{ Session::get('message') }} ");
+                break;
+
+                case 'error':
+                toastr.error(" {{ Session::get('message') }} ");
+                break;
+            }
             @endif
-
-            {{-- @php
-
-
-                $role = Auth::user()->role;
+        </script>
 
 
-                switch ($role) {
-                    case '1':
-                        $this->redirectIntendeded(default: route('admin_dashboard', absolute: false), navigate: true);
-                        break;
+    </body>
 
-                 case '2':
-                        $this->redirectIntendeded(default: route('manager_dashboard', absolute: false), navigate: true);
-                        break;
-
-                 case '3':
-                        $this->redirectIntendeded(default: route('dashboard', absolute: false), navigate: true);
-                        break;
-
-                    default:
-                        return redirect('/login');
-                        break;
-                }
-
-
-
-            @endphp --}}
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

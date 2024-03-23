@@ -10,6 +10,7 @@
             @include('backend.dashboard.master_footer')
 
             @yield('footer_script')
+            
 
 
             </body>
