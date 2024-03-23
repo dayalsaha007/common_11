@@ -69,8 +69,8 @@ class AdminProfileChangeController extends Controller
 
                 $image = $request->file('image');
                 $name_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                Image::make($image)->save('backend/upload/user/' .  $name_name);
-                $save_url = 'backend/upload/user/' .  $name_name;
+                $image->move('backend/uploads/user/',  $name_name);
+                $save_url = 'backend/uploads/user/' .  $name_name;
 
                 $profile_img = User::find($user_id);
                  $old_image =  $profile_img->image;
@@ -96,8 +96,8 @@ class AdminProfileChangeController extends Controller
 
                     $image = $request->file('image');
                     $name_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-                    Image::make($image)->save('backend/upload/user/' .  $name_name);
-                    $save_url = 'backend/upload/user/' .  $name_name;
+                    $image->move('backend/uploads/user/',  $name_name);
+                    $save_url = 'backend/uploads/user/' .  $name_name;
 
                     $profile_img = User::find($user_id);
                     $old_image =  $profile_img->image;
@@ -136,5 +136,5 @@ class AdminProfileChangeController extends Controller
         }
 
     }
-    
+
 }
