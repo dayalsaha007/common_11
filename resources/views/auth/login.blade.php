@@ -30,19 +30,12 @@
                         <div class="position-relative rounded-3 overflow-hidden" style="background-image: url({{asset('backend/assets/images/flowers/img-3.png')}}); background-position: top right; background-repeat: no-repeat;">
                             <div class="card bg-transparent mb-0">
                             <!-- Logo-->
-                            <div class="auth-brand">
-                                <a href="index.html" class="logo-light">
-                                    <img src="{{asset('backend/assets/images/logo.png')}}" alt="logo" height="22">
-                                </a>
-                                <a href="index.html" class="logo-dark">
-                                    <img src="{{asset('backend/assets/images/logo-dark.png')}}" alt="dark logo" height="22">
-                                </a>
-                            </div>
+
 
                             <div class="card-body p-4">
-                                <div class="w-50">
+                                <div class="w-50 mb-3">
                                     <h4 class="pb-0 fw-bold">Sign In</h4>
-                                    <p class="fw-semibold mb-4">Enter your email address and password to access admin panel.</p>
+
                                 </div>
 
                                 <form method="POST" action="{{ route('login') }}">
@@ -66,12 +59,12 @@
                                         </div>
                                     </div>
 
-                                    <div class="mb-3">
+                                    {{--  <div class="mb-3">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
                                             <label class="form-check-label" for="checkbox-signin">Remember me</label>
                                         </div>
-                                    </div>
+                                    </div>  --}}
 
                                     <div class="mb-3 text-center">
                                         <button class="btn btn-primary w-100" type="submit"> Log In </button>
@@ -99,7 +92,7 @@
         <!-- end page -->
 
         <footer class="footer footer-alt fw-medium">
-            <span class="bg-body"><script>document.write(new Date().getFullYear())</script> © Pialy Saha.com</span>
+            <span class="bg-body"><script>document.write(new Date().getFullYear())</script> © Dayal Saha.com</span>
         </footer>
         <!-- Vendor js -->
         <script src="{{asset('backend/assets/js/vendor.min.js')}}"></script>
