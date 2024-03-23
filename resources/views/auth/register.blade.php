@@ -30,20 +30,20 @@
                         <div class="position-relative rounded-3 overflow-hidden" style="background-image: url({{asset('backend/assets/images/flowers/img-3.png')}}); background-position: top right; background-repeat: no-repeat;">
                             <div class="card bg-transparent mb-0">
                             <!-- Logo-->
-                            <div class="auth-brand">
+                            {{--  <div class="auth-brand">
                                 <a href="index.html" class="logo-light">
                                     <img src="{{asset('backend/assets/images/logo.png')}}" alt="logo" height="22">
                                 </a>
                                 <a href="index.html" class="logo-dark">
                                     <img src="{{asset('backend/assets/images/logo-dark.png')}}" alt="dark logo" height="22">
                                 </a>
-                            </div>
+                            </div>  --}}
 
                                 <div class="card-body p-4">
 
                                     <div class="w-75">
-                                        <h4 class="text-dark-50 mt-0 fw-bold">Free Sign Up</h4>
-                                        <p class="text-muted mb-4">Dont have an account? Create your account, it takes less than a minute </p>
+                                        <h4 class="text-dark-50 mt-0 fw-bold mb-3">Sign Up</h4>
+
                                     </div>
 
                                     <form method="POST" action="{{ route('register') }}">
@@ -79,12 +79,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="mb-3">
+                                        {{--  <div class="mb-3">
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="checkbox-signup">
                                                 <label class="form-check-label" for="checkbox-signup">I accept <a href="#" class="text-muted">Terms and Conditions</a></label>
                                             </div>
-                                        </div>
+                                        </div>  --}}
 
                                         <div class="mb-3 text-center">
                                             <button class="btn btn-primary w-100" type="submit"> Sign Up </button>
@@ -112,7 +112,7 @@
         <!-- end page -->
 
         <footer class="footer footer-alt fw-medium">
-            <span class="bg-body"><script>document.write(new Date().getFullYear())</script> © Pialy Saha.com</span>
+            <span class="bg-body"><script>document.write(new Date().getFullYear())</script> © Dayal Saha.com</span>
         </footer>
         <!-- Vendor js -->
         <script src="{{asset('backend/assets/js/vendor.min.js')}}"></script>

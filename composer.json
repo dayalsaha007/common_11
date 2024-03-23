@@ -49,6 +49,7 @@
             "@php artisan migrate --graceful --ansi"
         ]
     },
+    
     "extra": {
         "laravel": {
             "dont-discover": []
