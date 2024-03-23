@@ -71,7 +71,7 @@
                                         <a href="{{ route('profile_change') }}">Profile Change</a>
                                     </li>
                                     <li>
-                                        <a href="">Advance Setting</a>
+                                        <a href="{{ route('advance_setting') }}">Advance Setting</a>
                                     </li>
                                     <li>
                                         <a href="">Language</a>

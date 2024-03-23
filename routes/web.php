@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\AdminProfileChangeController;
+use App\Http\Controllers\admin\AdminAdvanceSettingController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,9 +28,17 @@ require __DIR__.'/auth.php';
 
     Route::middleware(['auth', 'verified', 'rolecheck',  'admin'])->group(function(){
         Route::controller(AdminProfileChangeController::class)->group(function(){
-            
+
             Route::get('/profile/change', 'profile_change')->name('profile_change');
             Route::post('/update/profile/change/{user_id}', 'update_profile_change')->name('update_profile_change');
+        });
+
+    });
+
+    Route::middleware('auth')->group(function(){
+        Route::controller(AdminAdvanceSettingController::class)->group(function(){
+            route::get('/advance/setting', 'advance_setting')->name('advance_setting');
+            route::post('/update/advance/setting/{up_id}', 'update_advance_setting')->name('update_advance_setting');
         });
 
     });
