@@ -9,10 +9,7 @@
         @section('content')
 
 
-        <div class="content">
 
-            <div class="content-page">
-                <!-- Start Content-->
                 <div class="container-fluid">
 
                    <div class="row">
@@ -100,9 +97,7 @@
                 </div>
                 <!-- container -->
 
-            </div>
-        </div>
-        <!-- content -->
+
 
 
 

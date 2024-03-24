@@ -9,10 +9,7 @@
         @section('content')
 
 
-        <div class="content">
 
-            <div class="content-page">
-                <!-- Start Content-->
                 <div class="container-fluid">
 
                    <div class="row">
@@ -21,9 +18,9 @@
 
                                 <style>
                                     img.p_image.mb-3 {
-                                        {{--  border: 8px solid #6b9190;
+                                       border: 8px solid #6b9190;
                                         border-radius: 50%;
-                                        line-height: 150px;  --}}
+                                        line-height: 150px;
                                         height: 150px;
                                         width: 150px;
                                     }
@@ -160,9 +157,6 @@
                 </div>
                 <!-- container -->
 
-            </div>
-        </div>
-        <!-- content -->
 @endsection
 
 @section('footer_script')
