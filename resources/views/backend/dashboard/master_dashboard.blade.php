@@ -106,6 +106,14 @@
         <script src="{{asset('backend/assets/vendor/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
         <script src="{{asset('backend/assets/vendor/datatables.net-select/js/dataTables.select.min.js')}}"></script>
 
+
+        <!----Taggyfy js--->
+        <script src="https://unpkg.com/@yaireo/tagify"></script>
+        <script src="https://unpkg.com/@yaireo/tagify@3.1.0/dist/tagify.polyfills.min.js"></script>
+
+          <!--Ck editor-->
+          <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
+
         <script>
             @if(Session::has('message'))
             var type = "{{ Session::get('alert-type','info') }}"

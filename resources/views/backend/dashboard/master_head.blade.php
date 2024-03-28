@@ -21,6 +21,8 @@
 
     <!-- App css -->
     <link href="{{asset('backend/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
+     <!-- custom css -->
+    <link href="{{asset('backend/assets/css/custom.css')}}" rel="stylesheet" type="text/css"  />
 
     <!-- Icons css -->
     <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
@@ -71,7 +73,8 @@
     <!----Jquery ui DatePicker--->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"  />
 
-
+     <!----Taggyfy css--->
+     <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 
 
 
