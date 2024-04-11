@@ -155,7 +155,7 @@
                     .then((data)=>{
                         console.log(data);
                         if(data.data.message){
-                            $('.table').load(location.href + ' .table');
+                            datatable.ajax.reload();
                             toastr.error(data.data.message);
                         }else if(data.data.warning){
                             toastr.error(data.data.warning);
