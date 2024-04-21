@@ -22,7 +22,9 @@ class AdminProfileChangeController extends Controller
             'user' => $user,
         ]);
     }
+
     function update_profile_change(Request $request, $user_id){
+
 
         if($request->file('image') == null  ){
 
@@ -32,6 +34,12 @@ class AdminProfileChangeController extends Controller
 
                     'name' => $request->name,
                     'email' => $request->email,
+                    'phone' => $request->phone,
+                    'country' => $request->country,
+                    'address' => $request->address,
+                    'state' => $request->state,
+                    'city' => $request->city,
+                    'zip' => $request->zip,
                     'created_at' => Carbon::now(),
                 ]);
                 return response()->json(['status'=>'success', 'message'=>'Name & Email updated successfully']);
@@ -48,6 +56,12 @@ class AdminProfileChangeController extends Controller
 
                             'name' => $request->name,
                             'email' => $request->email,
+                            'phone' => $request->phone,
+                            'country' => $request->country,
+                            'address' => $request->address,
+                            'state' => $request->state,
+                            'city' => $request->city,
+                            'zip' => $request->zip,
                             'password' => Hash::make($request->new_pass),
                             'created_at' => Carbon::now(),
                         ]);
@@ -81,6 +95,12 @@ class AdminProfileChangeController extends Controller
                         'name' => $request->name,
                         'email' => $request->email,
                         'image' => $save_url,
+                        'phone' => $request->phone,
+                        'country' => $request->country,
+                        'address' => $request->address,
+                        'state' => $request->state,
+                        'city' => $request->city,
+                        'zip' => $request->zip,
                         'created_at' => Carbon::now(),
                     ]);
 
@@ -112,6 +132,12 @@ class AdminProfileChangeController extends Controller
                                 'name' => $request->name,
                                 'email' => $request->email,
                                 'image' => $save_url,
+                                'phone' => $request->phone,
+                                'country' => $request->country,
+                                'address' => $request->address,
+                                'state' => $request->state,
+                                'city' => $request->city,
+                                'zip' => $request->zip,
                                 'password' => Hash::make($request->new_pass),
                                 'created_at' => Carbon::now(),
                             ]);
@@ -136,5 +162,7 @@ class AdminProfileChangeController extends Controller
         }
 
     }
+
+
 
 }
