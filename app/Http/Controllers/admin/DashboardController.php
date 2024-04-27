@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Mail\WebsiteMail;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
 class DashboardController extends Controller
@@ -71,7 +72,7 @@ class DashboardController extends Controller
                 return redirect('/')->with($notification);
             }
 
-
+        /*-----------Signup Verify---------------*/
             public function signup_verify($email,$token ){
 
                 $user_data = User::where('email',$email)->where('token',$token)->first();
@@ -100,15 +101,13 @@ class DashboardController extends Controller
 
             }
 
-
-
-
-
+        /*-----------Forget Password--------------*/
             public function admin_forget_password(){
 
                 return view('backend.password.forget_password');
             }
 
+        /*-----------Forget Password submit--------------*/
             public function admin_forget_password_sub(Request $request){
                 $request->validate([
                     'email' => 'required|email'
@@ -145,7 +144,7 @@ class DashboardController extends Controller
             }
 
 
-
+        /*-----------Reset Password ------------*/
             public function admin_reset_password($token, $email){
 
 
@@ -157,6 +156,7 @@ class DashboardController extends Controller
                 return view('backend.password.reset_password', compact('token', 'email'));
             }
 
+        /*-----------Reset Password submit--------------*/
             public function admin_reset_password_sub(Request $request)
             {
                 $request->validate([
@@ -178,4 +178,154 @@ class DashboardController extends Controller
                 return redirect()->route('login')->with($notification);
 
             }
+
+        /*-----------Update User Data-------------*/
+                function update_user_data(Request $request, $user_id){
+
+                    if($request->file('image') == null  ){
+
+                        if($request->new_pass == ''){
+
+                            User::findorFail($user_id)->update([
+
+                                'name' => $request->name,
+                                'email' => $request->email,
+                                'phone' => $request->phone,
+                                'country' => $request->country,
+                                'address' => $request->address,
+                                'state' => $request->state,
+                                'city' => $request->city,
+                                'zip' => $request->zip,
+                                'created_at' => Carbon::now(),
+                            ]);
+                            return response()->json(['status'=>'success', 'message'=>'Name & Email updated successfully']);
+
+                        }
+                        else
+                        {
+
+                            if( Hash::check($request->old_pass, Auth::user()->password)  ){
+
+                                if ( $request->new_pass == $request->confirm_pass ) {
+
+                                    User::findorFail($user_id)->update([
+
+                                        'name' => $request->name,
+                                        'email' => $request->email,
+                                        'phone' => $request->phone,
+                                        'country' => $request->country,
+                                        'address' => $request->address,
+                                        'state' => $request->state,
+                                        'city' => $request->city,
+                                        'zip' => $request->zip,
+                                        'password' => Hash::make($request->new_pass),
+                                        'created_at' => Carbon::now(),
+                                    ]);
+                                    return response()->json(['status'=>'success', 'message'=>'password updated successfully']);
+                                }
+                                return response()->json(['status'=>'success', 'message'=>'Mis matched Password']);
+
+                                }
+                            else
+                            {
+
+                                return response()->json(['status'=>'success', 'message'=>'Mis matched Password']);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+
+                            $image = $request->file('image');
+                            $name_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+                            $image->move('backend/uploads/user/',  $name_name);
+                            $save_url = 'backend/uploads/user/' .  $name_name;
+
+                            $profile_img = User::find($user_id);
+                             $old_image =  $profile_img->image;
+
+                            if($request->new_pass == ''){
+
+                                User::findorFail($user_id)->update([
+                                    'name' => $request->name,
+                                    'email' => $request->email,
+                                    'image' => $save_url,
+                                    'phone' => $request->phone,
+                                    'country' => $request->country,
+                                    'address' => $request->address,
+                                    'state' => $request->state,
+                                    'city' => $request->city,
+                                    'zip' => $request->zip,
+                                    'created_at' => Carbon::now(),
+                                ]);
+
+                                if (file_exists($old_image)) {
+                                    unlink($old_image);
+                                 }
+
+                                return response()->json(['status'=>'success', 'message'=>'Image updated Successfully!']);
+
+                            }
+                            else
+                            {
+
+                                $image = $request->file('image');
+                                $name_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+                                $image->move('backend/uploads/user/',  $name_name);
+                                $save_url = 'backend/uploads/user/' .  $name_name;
+
+                                $profile_img = User::find($user_id);
+                                $old_image =  $profile_img->image;
+
+
+                                if( Hash::check($request->old_pass, Auth::user()->password)  ){
+
+                                    if ( $request->new_pass == $request->confirm_pass ) {
+
+                                        User::findorFail($user_id)->update([
+
+                                            'name' => $request->name,
+                                            'email' => $request->email,
+                                            'image' => $save_url,
+                                            'phone' => $request->phone,
+                                            'country' => $request->country,
+                                            'address' => $request->address,
+                                            'state' => $request->state,
+                                            'city' => $request->city,
+                                            'zip' => $request->zip,
+                                            'password' => Hash::make($request->new_pass),
+                                            'created_at' => Carbon::now(),
+                                        ]);
+
+                                        if (file_exists($old_image)) {
+                                            unlink($old_image);
+                                            }
+
+                                        return response()->json(['status'=>'success', 'message'=>'Image & password updated!']);
+                                    }
+                                    return response()->json(['status'=>'success', 'message'=>'Mis matched Password']);
+
+                                    }
+                                else
+                                {
+
+                                    return response()->json(['status'=>'success', 'message'=>'Mis matched Password']);
+                                }
+
+                            }
+
+                    }
+
+
+                }
+
+
+
+
+
+
+
+
+
 }
