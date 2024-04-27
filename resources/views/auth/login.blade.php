@@ -1,34 +1,34 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Log In</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-        <meta content="Coderthemes" name="author" />
 
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="{{asset('backend/assets/images/favicon.ico')}}">
+<head>
+    <meta charset="utf-8" />
+    <title>Log In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
 
-        <!-- Theme Config Js -->
-        <script src="{{asset('backend/assets/js/config.js')}}"></script>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
 
-        <!-- App css -->
-        <link href="{{asset('backend/assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
+    <!-- Theme Config Js -->
+    <script src="{{ asset('backend/assets/js/config.js') }}"></script>
 
-        <!-- Icons css -->
-        <link href="{{asset('backend/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-    </head>
+    <!-- App css -->
+    <link href="{{ asset('backend/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
 
-    <body class="authentication-bg position-relative">
-        <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5 position-relative">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xxl-6 col-lg-5">
-                        <div class="position-relative rounded-3 overflow-hidden" style="background-image: url({{asset('backend/assets/images/flowers/img-3.png')}}); background-position: top right; background-repeat: no-repeat;">
-                            <div class="card bg-transparent mb-0">
+    <!-- Icons css -->
+    <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+</head>
+
+<body class="authentication-bg position-relative">
+    <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5 position-relative">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xxl-6 col-lg-5">
+                    <div class="position-relative rounded-3 overflow-hidden" style="background-image: url({{ asset('backend/assets/images/flowers/img-3.png') }}); background-position: top right; background-repeat: no-repeat;">
+                        <div class="card bg-transparent mb-0">
                             <!-- Logo-->
 
 
@@ -44,22 +44,29 @@
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Email address</label>
                                         <input class="form-control" type="email" name="email" id="email" required="" placeholder="Enter your email">
+                                        @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-3">
-                                        <a href="{{ route('admin_forget_password') }}" class="float-end fs-12">Forgot your password?</a>
+                                        <a href="{{ route('admin_forget_password') }}" class="float-end fs-12">Forgot
+                                            your password?</a>
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" id="password" class="form-control" name="password" placeholder="Enter your password">
                                             <div class="input-group-text" data-password="false">
                                                 <i class="ri-eye-line toggle-password"></i>
-                                                {{--  <span class="password-eye"></span>  --}}
+                                                {{-- <span class="password-eye"></span>  --}}
 
                                             </div>
                                         </div>
+                                        @error('password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
-                                    {{--  <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="checkbox-signin" checked>
                                             <label class="form-check-label" for="checkbox-signin">Remember me</label>
@@ -76,65 +83,74 @@
                         <!-- end card -->
                     </div>
 
-                        <div class="row mt-3">
-                            <div class="col-12 text-center">
-                                <p class="text-muted bg-body">Do not have an account? <a href="{{ route('register') }}" class="text-muted ms-1 link-offset-3 text-decoration-underline"><b>Sign Up</b></a></p>
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-muted bg-body">Do not have an account? <a href="{{ route('register') }}" class="text-muted ms-1 link-offset-3 text-decoration-underline"><b>Sign Up</b></a>
+                            </p>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
 
-                    </div> <!-- end col -->
-                </div>
-                <!-- end row -->
+                </div> <!-- end col -->
             </div>
-            <!-- end container -->
+            <!-- end row -->
         </div>
-        <!-- end page -->
+        <!-- end container -->
+    </div>
+    <!-- end page -->
 
-        <footer class="footer footer-alt fw-medium">
-            <span class="bg-body"><script>document.write(new Date().getFullYear())</script> © Dayal Saha.com</span>
-        </footer>
-        <!-- Vendor js -->
-        <script src="{{asset('backend/assets/js/vendor.min.js')}}"></script>
+    <footer class="footer footer-alt fw-medium">
+        <span class="bg-body">
+            <script>
+                document.write(new Date().getFullYear())
 
-        <!-- App js -->
-        <script src="{{asset('backend/assets/js/app.min.js')}}"></script>
+            </script> © Dayal Saha.com
+        </span>
+    </footer>
+    <!-- Vendor js -->
+    <script src="{{ asset('backend/assets/js/vendor.min.js') }}"></script>
 
-        <script type="text/javascript">
-            $(document).on('click', '.toggle-password', function() {
+    <!-- App js -->
+    <script src="{{ asset('backend/assets/js/app.min.js') }}"></script>
 
-                $(this).toggleClass("ri-eye-off-line");
+    <script type="text/javascript">
+        $(document).on('click', '.toggle-password', function() {
 
-                var input = $(".pass_log_id");
-                input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
-            });
-        </script>
+            $(this).toggleClass("ri-eye-off-line");
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-        <script>
-            @if(Session::has('message'))
-            var type = "{{ Session::get('alert-type','info') }}"
-            switch(type){
-                case 'info':
+            var input = $(".pass_log_id");
+            input.attr('type') === 'password' ? input.attr('type', 'text') : input.attr('type', 'password')
+        });
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+        @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info') }}"
+        switch (type) {
+            case 'info':
                 toastr.info(" {{ Session::get('message') }} ");
                 break;
 
-                case 'success':
+            case 'success':
                 toastr.success(" {{ Session::get('message') }} ");
                 break;
 
-                case 'warning':
+            case 'warning':
                 toastr.warning(" {{ Session::get('message') }} ");
                 break;
 
-                case 'error':
+            case 'error':
                 toastr.error(" {{ Session::get('message') }} ");
                 break;
-            }
-            @endif
-        </script>
+        }
+        @endif
+
+    </script>
 
 
-    </body>
+</body>
 
 </html>
+
