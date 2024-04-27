@@ -24,7 +24,7 @@ class RoleCheck
             return redirect()->route("login")->with("error", "Please login First!");
         }
 
-        return $next($request);
-        
+        // return $next($request);
+
     }
 }

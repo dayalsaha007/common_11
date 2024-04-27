@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Mail\WebsiteMail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisteredUserController extends Controller
 {
@@ -35,17 +37,44 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $token = hash('sha256', time());
+
+        $verification_link = url('admin/signup/verify/'.$request->email.'/'.$token);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'show_password' => $request->password,
+            'token' => $token,
+            'status' => 0,
         ]);
 
-        event(new Registered($user));
+        $subject = 'Sign Up Verification';
+        $body = 'Please click on the link below to confirm the sign-up process:<br><a href="' . $verification_link . '"> Click Here </a>';
 
-        Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+
+        Mail::to($request->email)->send(new WebsiteMail($subject, $body));
+
+        $notification = array(
+            'message' => 'To complete the signup, Please check your email and click on the link',
+            'alert-type' => 'success'
+        );
+
+        return redirect('/register')->with($notification);
+
+
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        //     'show_password' => $request->password,
+        // ]);
+
+        // event(new Registered($user));
+
+        // Auth::login($user);
+
+        // return redirect(route('dashboard', absolute: false));
     }
 }
