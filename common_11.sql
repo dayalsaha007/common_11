@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2024 at 09:46 AM
+-- Generation Time: May 08, 2024 at 08:41 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,6 +32,20 @@ CREATE TABLE `cache` (
   `value` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cache`
+--
+
+INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
+('admin@gmail.com|127.0.0.1', 'i:1;', 1714247690),
+('admin@gmail.com|127.0.0.1:timer', 'i:1714247690;', 1714247690),
+('dayal@gmail.com|127.0.0.1', 'i:1;', 1714245726),
+('dayal@gmail.com|127.0.0.1:timer', 'i:1714245726;', 1714245726),
+('dayalsaha1234567@gmail.com|127.0.0.1', 'i:1;', 1714246092),
+('dayalsaha1234567@gmail.com|127.0.0.1:timer', 'i:1714246092;', 1714246092),
+('pialy@gmail.com|127.0.0.1', 'i:1;', 1714246819),
+('pialy@gmail.com|127.0.0.1:timer', 'i:1714246819;', 1714246819);
 
 -- --------------------------------------------------------
 
@@ -139,6 +153,13 @@ CREATE TABLE `password_reset_tokens` (
 CREATE TABLE `seos` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `footer_logo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `favicon` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `top_bar_phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `top_bar_email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `footer_address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `footer_phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `footer_email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `copyright` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_keyword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `meta_description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -154,8 +175,8 @@ CREATE TABLE `seos` (
 -- Dumping data for table `seos`
 --
 
-INSERT INTO `seos` (`id`, `footer_logo`, `meta_title`, `meta_keyword`, `meta_description`, `facebook`, `twitter`, `google`, `linkedin`, `created_at`, `updated_at`) VALUES
-(1, 'backend/uploads/footer_logo/1794343119683663.png', 'Lorem ipsum dolor sit', 'Lorem ipsum, Lorem ipsum dolor', 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.google.com/', 'https://www.linkedin.com/', NULL, '2024-03-23 12:58:12');
+INSERT INTO `seos` (`id`, `footer_logo`, `favicon`, `top_bar_phone`, `top_bar_email`, `footer_address`, `footer_phone`, `footer_email`, `copyright`, `meta_title`, `meta_keyword`, `meta_description`, `facebook`, `twitter`, `google`, `linkedin`, `created_at`, `updated_at`) VALUES
+(1, '', '', '01676163421', 'admin@gmail.com', 'Dhaka, Mugda', '01676163421', 'dayalsaha1234567@gmail.com', 'copyright@2024', 'Lorem ipsum dolor sit', 'Lorem ipsum, Lorem ipsum dolor', 'Lorem ipsum dolor sit amet consectetur adipisicing elit.', 'https://www.facebook.com/', 'https://www.twitter.com/', 'https://www.google.com/', 'https://www.linkedin.com/', NULL, '2024-05-08 12:38:55');
 
 -- --------------------------------------------------------
 
@@ -177,8 +198,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('b10R8LLfohLcTX9tDxTUPOf15nyGXh4ZSTxcuYNT', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoibTZpMks1U1dpQ1hjbmx2S3MzWElpa2Y1ZTBsbFg3UkJhb3M5M3VHbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9wcm9maWxlL2NoYW5nZSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1713685465),
-('b3CfJyjH8zxPeZNdOZIl4U9xoD0SfZ69xOrSVlr0', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVTFWbW9peVQwdHdEYjBPbEk1WDFCbEF5b1JUeDAzenFzQnRhb3h6USI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZHZhbmNlL3NldHRpbmciO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1711280046);
+('HFZwEK2zpsxkc6fK4wVcQwVBOUsmUxeBPEsuUDkm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTE45UXFPYXFKc0d5ZVNoNnVpNWRqc0dpcUNkZ3FVT1dVbmFlVnRxVCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6MzoidXJsIjthOjE6e3M6ODoiaW50ZW5kZWQiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQiO319', 1714247647),
+('PGGfmrwa6RfBtTUiZl8vjlS5yk8Gdjm4TOoByXxJ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUGJJdkl6N0NFZURwZ3FkV1N1WWxzRmJONFN5Z29mdlhkd1lFVmlFOCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9yZWdpc3RlciI7fX0=', 1714561747);
 
 -- --------------------------------------------------------
 
@@ -217,7 +238,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `sh
 (2, 'pialy saha', 'pialy@gmail.com', NULL, '$2y$12$VTqj.tWroIOOPmfFNzZiy.UjU4CK7eBoYFW9XY72tFsavQrQ3go1y', NULL, NULL, '2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2024-03-23 01:21:45', '2024-03-23 01:21:45'),
 (3, 'puspo saha', 'puspo@gmail.com', NULL, '$2y$12$vC5nPkdyIUVo9/ARCSkDPuSMHdMch3LZYt55U3w69Te8L5wdexmJK', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2024-03-23 01:24:54', '2024-03-23 01:24:54'),
 (5, 'Tuku Saha', 'tuku@gmail.com', NULL, '$2y$12$509FKob5M.WR4GWBHcoI3.y2bMHj4907ySYzBxHCWvohsh97UVnbu', 'dayal007', NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2024-03-23 05:33:19', '2024-03-23 05:33:19'),
-(6, 'Lev Wiley', 'nytepaluk@mailinator.com', NULL, '$2y$12$k5sVCst7GbmIKJHJ20a3au8rhlTSChzExLJql99PtbGILhclh5j22', 'Pa$$w0rd!', NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2024-03-23 09:51:34', '2024-03-23 09:51:34');
+(6, 'Lev Wiley', 'nytepaluk@mailinator.com', NULL, '$2y$12$k5sVCst7GbmIKJHJ20a3au8rhlTSChzExLJql99PtbGILhclh5j22', 'Pa$$w0rd!', NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2024-03-23 09:51:34', '2024-03-23 09:51:34'),
+(7, 'noman', 'noman@gmail.com', NULL, '$2y$12$TEXGpAmd6cj8QvHFd8131.CL44UEWYTNRlJdgpbBXhKOiBY9CUEPK', NULL, NULL, '3', NULL, NULL, NULL, NULL, NULL, NULL, '205999f41bd60e78c9172f9d8232fed8441b000e073aa7a9b2729f64439b78c1', 0, NULL, '2024-05-01 05:09:04', '2024-05-01 05:09:04');
 
 --
 -- Indexes for dumped tables
@@ -320,7 +342,7 @@ ALTER TABLE `seos`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

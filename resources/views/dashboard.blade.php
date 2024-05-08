@@ -226,7 +226,7 @@
         </div>
 
         </div>
-    <!--------------Dahboard Code Start------------------------>
+    <!--------------Dahboard Code close------------------------>
 
 
     <!-- Bootstrap Jquery -->
